@@ -31,8 +31,6 @@ apt install -y \
 echo '{' >> /etc/docker/daemon.json  # hack to fix LXC/Docker filesystem clash
 echo '   "storage-driver": "vfs"' >> /etc/docker/daemon.json  # hack to fix LXC/Docker filesystem clash
 echo '}' >> /etc/docker/daemon.json  # hack to fix LXC/Docker filesystem clash
-nano /etc/docker/daemon.json
-cat /etc/docker/daemon.json
 systemctl enable docker
 
 
