@@ -10,7 +10,6 @@ LOCALE_VALUE="en_AU.UTF-8"
 locale-gen ${LOCALE_VALUE}
 source /etc/default/locale
 update-locale ${LOCALE_VALUE}
-sed -e '/SendEnv/ s/^#*/#/' -i /etc/ssh/ssh_config
 
 
 # timezone
@@ -58,6 +57,7 @@ chmod 600 /home/${SSH_USER}/.ssh/id_rsa*
 chmod 600 /home/${SSH_USER}/.ssh/authorized_keys
 sed -i -e 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
 sed -i -e 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+sed -e '/SendEnv/ s/^#*/#/' -i /etc/ssh/ssh_config  # locale hack
 systemctl restart ssh
 
 

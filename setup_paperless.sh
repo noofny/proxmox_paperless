@@ -10,7 +10,6 @@ LOCALE_VALUE="en_AU.UTF-8"
 locale-gen ${LOCALE_VALUE}
 source /etc/default/locale
 update-locale ${LOCALE_VALUE}
-sed -e '/SendEnv/ s/^#*/#/' -i /etc/ssh/ssh_config
 
 
 # # user/groups...
