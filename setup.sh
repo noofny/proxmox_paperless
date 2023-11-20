@@ -93,6 +93,11 @@ pct create "${CONTAINER_ID}" "${TEMPLATE_STRING}" \
     || fatal "Failed to create container!"
 
 
+# Configure container
+info "Configuring LXC container..."
+pct resize "${CONTAINER_ID}" rootfs 50G || fatal "Failed to expand root volume!"
+pct set "${CONTAINER_ID}" -mp0 /mnt/docs,mp=/mnt/docs
+
 
 # Start container
 info "Starting LXC container..."
@@ -112,10 +117,6 @@ cat ./setup_os.sh
 pct push "${CONTAINER_ID}" ./setup_os.sh /setup_os.sh -perms 755
 pct exec "${CONTAINER_ID}" -- bash -c "/setup_os.sh" || fatal "Script execution failed!"
 pct reboot "${CONTAINER_ID}"
-
-
-# Add mounts
-pct set "${CONTAINER_ID}" -mp0 /mnt/docs,mp=/mnt/docs
 
 
 # Setup Docker
