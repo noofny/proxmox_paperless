@@ -81,6 +81,7 @@ pct create "${CONTAINER_ID}" "${TEMPLATE_STRING}" \
     -arch "${CONTAINER_ARCH}" \
     -cores 2 \
     -memory 4096 \
+    -swap 0 \
     -onboot 0 \
     -features nesting=1,keyctl=1 \
     -hostname "${HOSTNAME}" \
