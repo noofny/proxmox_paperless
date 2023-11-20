@@ -29,6 +29,8 @@ apt install -y \
     containerd.io \
     docker-compose
 echo '{\n "storage-driver": "vfs" \n}' > /etc/docker/daemon.json  # hack to fix LXC/Docker filesystem clash
+nano /etc/docker/daemon.json
+cat /etc/docker/daemon.json
 systemctl enable docker
 
 
