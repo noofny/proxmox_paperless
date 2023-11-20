@@ -1,6 +1,18 @@
 #!/bin/bash
 
 
+echo "Setup Paperless : begin"
+
+
+# locale
+echo "Fixing locale..."
+LOCALE_VALUE="en_AU.UTF-8"
+locale-gen ${LOCALE_VALUE}
+source /etc/default/locale
+update-locale ${LOCALE_VALUE}
+sed -e '/SendEnv/ s/^#*/#/' -i /etc/ssh/ssh_config
+
+
 # # user/groups...
 # passwd
 # sudo addgroup --system docker
@@ -30,4 +42,5 @@ docker-compose up --detach
 # docker exec -it paperless-webserver-1 bash
 
 
-echo "Setup Paperless complete - you can access the console at http://$(hostname -I):8000/ using admin@example.com and 'changeme'"
+echo "You can access the console at http://$(hostname -I):8000/"
+echo "Setup Paperless : complete"

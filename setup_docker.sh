@@ -1,17 +1,16 @@
 #!/bin/bash
 
 
+echo "Setup Docker : begin"
+
+
 # locale
-# echo "Setting locale..."
-# LOCALE_VALUE="en_AU.UTF-8"
-# echo ">>> locale-gen..."
-# locale-gen ${LOCALE_VALUE}
-# cat /etc/default/locale
-# source /etc/default/locale
-# echo ">>> update-locale..."
-# update-locale ${LOCALE_VALUE}
-# echo ">>> hack /etc/ssh/ssh_config..."
-# sed -e '/SendEnv/ s/^#*/#/' -i /etc/ssh/ssh_config
+echo "Fixing locale..."
+LOCALE_VALUE="en_AU.UTF-8"
+locale-gen ${LOCALE_VALUE}
+source /etc/default/locale
+update-locale ${LOCALE_VALUE}
+sed -e '/SendEnv/ s/^#*/#/' -i /etc/ssh/ssh_config
 
 
 echo "Installing dependencies..."
@@ -33,4 +32,4 @@ apt install -y \
 systemctl enable docker
 
 
-echo "Setup Docker complete"
+echo "Setup Docker : complete"
