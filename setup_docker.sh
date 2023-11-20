@@ -31,4 +31,11 @@ apt install -y \
 systemctl enable docker
 
 
+echo "Setting Docker legacy file system driver..."
+systemctl stop docker
+nano /etc/docker/daemon.json
+# "storage-driver": "vfs"
+systemctl start docker
+
+
 echo "Setup Docker : complete"
