@@ -21,15 +21,13 @@ echo "Creating stack..."
 mv /docker-compose.yaml /home/docsadmin/docker-compose.yaml
 cd /home/docsadmin
 docker-compose pull
-# echo "Creating user..."
-# docker-compose run --rm webserver createsuperuser
 echo "Starting stack..."
 docker-compose up --detach
 
 
 echo "Connecting to container to setup user..."
 echo "NOTE: once connected to interactive session run 'python manage.py createsuperuser', follow prompts, then exit"
-docker exec -it paperless-webserver-1 bash
+docker exec -it docsadmin_webserver_1 bash
 
 
 echo "You can access the console at http://$(hostname -I):8000/"
