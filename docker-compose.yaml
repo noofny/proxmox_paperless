@@ -48,6 +48,7 @@ services:
       timeout: 10s
       retries: 5
     volumes:
+      # - /home/docsadmin/paperless/data:/data
       - /mnt/docs/paperless/data:/usr/src/paperless/data
       - /mnt/docs/paperless/media:/usr/src/paperless/media
       - /mnt/docs/paperless/export:/usr/src/paperless/export
