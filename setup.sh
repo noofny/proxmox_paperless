@@ -115,7 +115,7 @@ pct reboot "${CONTAINER_ID}"
 
 
 # Add mounts
-pct set "${CONTAINER_ID}" -mp0 mp=/mnt/docs,/mnt/docs
+pct set "${CONTAINER_ID}" -mp0 /mnt/docs,mp=/mnt/docs
 
 
 # Setup Docker
