@@ -79,10 +79,9 @@ info "Using '$STORAGE' for storage location."
 info "Creating LXC container..."
 pct create "${CONTAINER_ID}" "${TEMPLATE_STRING}" \
     -arch "${CONTAINER_ARCH}" \
-    -cores 1 \
-    -memory 2048 \
-    -swap 2048 \
-    -onboot 1 \
+    -cores 2 \
+    -memory 4096 \
+    -onboot 0 \
     -features nesting=1,keyctl=1 \
     -hostname "${HOSTNAME}" \
     -net0 name=eth0,bridge=vmbr1,gw=${HOST_IP4_GATEWAY},ip=${HOST_IP4_CIDR} \
