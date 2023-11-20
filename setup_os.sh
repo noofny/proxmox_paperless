@@ -64,7 +64,6 @@ systemctl restart ssh
 # environment
 echo "alias ls='ls -lha'" >> /root/.bashrc
 echo "alias ls='ls -lha'" >> /home/docsadmin/.bashrc
-mkdir /mnt/docs
 
 
 echo "Setup OS : complete"
