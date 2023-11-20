@@ -25,10 +25,9 @@ echo "Starting stack..."
 docker-compose up --detach
 
 
-echo "Connecting to container to setup user..."
-echo "NOTE: once connected to interactive session run 'python manage.py createsuperuser', follow prompts, then exit"
-docker exec -it docsadmin_webserver_1 bash
-
-
+echo "Connecting to the web container and setup your user..."
+echo " > docker exec -it docsadmin_webserver_1 bash"
+echo " > python manage.py createsuperuser"
+echo "Follow the prompts and then exit."
 echo "You can access the console at http://$(hostname -I):8000/"
 echo "Setup Paperless : complete"
