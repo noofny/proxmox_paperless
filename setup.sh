@@ -107,7 +107,7 @@ fi
 # Setup OS
 info "Fetching setup script..."
 wget -qL https://raw.githubusercontent.com/noofny/proxmox_paperless/master/setup_os.sh
-info "Executing script..."
+info "Executing script 'setup_os.sh'..."
 cat ./setup_os.sh
 pct push "${CONTAINER_ID}" ./setup_os.sh /setup_os.sh -perms 755
 pct exec "${CONTAINER_ID}" -- bash -c "/setup_os.sh" || fatal "Script execution failed!"
@@ -121,7 +121,7 @@ pct set "${CONTAINER_ID}" -mp0 /mnt/docs,mp=/mnt/docs
 # Setup Docker
 info "Fetching setup script..."
 wget -qL https://raw.githubusercontent.com/noofny/proxmox_paperless/master/setup_docker.sh
-info "Executing script..."
+info "Executing script 'setup_docker.sh'..."
 cat ./setup_docker.sh
 pct push "${CONTAINER_ID}" ./setup_docker.sh /setup_docker.sh -perms 755
 pct exec "${CONTAINER_ID}" -- bash -c "/setup_docker.sh" || fatal "Script execution failed!"
@@ -132,9 +132,9 @@ pct reboot "${CONTAINER_ID}"
 info "Fetching setup script..."
 wget -qL https://raw.githubusercontent.com/noofny/proxmox_paperless/master/setup_paperless.sh
 wget -qL https://raw.githubusercontent.com/noofny/proxmox_paperless/master/docker-compose.yaml
-info "Executing script..."
+info "Executing script 'setup_paperless.sh'..."
 cat ./setup_paperless.sh
-pct push "${CONTAINER_ID}" ./setup_paperless.sh /setup_nginx.sh -perms 755
+pct push "${CONTAINER_ID}" ./setup_paperless.sh /setup_paperless.sh -perms 755
 pct push "${CONTAINER_ID}" ./docker-compose.yaml /docker-compose.yaml
 pct exec "${CONTAINER_ID}" -- bash -c "/setup_paperless.sh" || fatal "Script execution failed!"
 pct reboot "${CONTAINER_ID}"
